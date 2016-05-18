@@ -1,2 +1,2 @@
-# project-game
+# Project Game
 Strategy and Management Game
