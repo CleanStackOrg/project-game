@@ -1,7 +1,7 @@
 angular.module('app.version', [])
 
 .factory('version', function() {
-    return "alpha";
+    return "0.0.1";
 })
 
 .directive('appVersion', function(version) {
