@@ -1,0 +1,62 @@
+<div ng-controller="ChatCtrl" class="chat doc-content" layout="column" flex layout-fill ng-cloak>
+
+  <md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">
+        <md-button ng-href="{{backUrl}}">
+          <md-icon md-svg-icon="navigation:arrow_back" class="name"></md-icon>
+        </md-button>
+      My Messages</div>
+      <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+  </md-toolbar>
+
+  <md-content class="md-padding autocomplete" layout="column">
+    <md-chips ng-model="users" readonly="true">
+      <md-chip-template>
+        <strong>{{$chip}}</strong>
+        <em>(user)</em>
+      </md-chip-template>
+    </md-chips>
+  </md-content>
+
+  <md-content flex layout-padding >
+    <section style="height: 400px;">
+      <md-list layout-padding>
+        <md-list-item class="md-2-line" ng-repeat="message in messages">
+            <img ng-src="{{message.face}}" class="face">
+            <div class="md-list-item-text">
+              <h3>{{message.user}}</h3>
+              <p>
+                {{message.text}}
+              </p>
+            </div>
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </section>
+  </md-content>
+  <md-content flex layout-padding >
+
+    <form ng-submit="sendMessage()" layout layout-sm="column">
+      <md-input-container flex>
+        <input size="60" ng-model="message" placeholder="Type your message here..." autofocus/>
+      </md-input-container >
+      <md-input-container flex>
+        <md-button class="md-raised md-primary" ng-click="sendMessage()" ng-disabled="!message">Send <md-icon md-svg-icon="content:send" class="email"></md-icon> </md-button>
+      </md-input-container >
+    </form>
+
+    <md-divider></md-divider>
+
+      <p> Your current user name is {{name}}</p>
+
+    <form ng-submit="changeName()" layout layout-sm="column">
+      <md-input-container flex>
+        <input size="60" ng-model="newName" placeholder="Change your name"/>
+      </md-input-container >
+      <md-input-container flex>
+        <md-button class="md-raised md-primary" ng-click="changeName()" ng-disabled="!newName"> Change </md-button>
+      </md-input-container >
+    </form>
+
+  </md-content>
+</div>
